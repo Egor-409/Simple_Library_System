@@ -6,7 +6,7 @@ public class Main {
 	public static void main (String[] args) {
 		
 		Scanner scanner = new Scanner (System.in);
-		LibraryManager.loadData();
+		
 		
 		while(true){
 		
@@ -27,22 +27,22 @@ public class Main {
 				
 		switch(action) {
 		case 1:
-			System.out.println(LibraryManager.bookList());
+			System.out.println(LibraryManager.getInstance().bookList());
 			break;
 		case 2:
-			System.out.println(LibraryManager.addBook(scanner));
+			System.out.println(LibraryManager.getInstance().addBook(scanner));
 			break;
 		case 3:
-			System.out.println(LibraryManager.findBook(scanner));
+			System.out.println(LibraryManager.getInstance().findBook(scanner));
 			break;
 		case 4:
-			System.out.println(LibraryManager.getBook(scanner));
+			System.out.println(LibraryManager.getInstance().getBook(scanner));
 			break;
 		case 5:
-			System.out.println(LibraryManager.giveBook(scanner));
+			System.out.println(LibraryManager.getInstance().giveBook(scanner));
 			break;
 		case 6:
-			System.out.println(LibraryManager.removeBook(scanner));
+			System.out.println(LibraryManager.getInstance().removeBook(scanner));
 			break;
 		case 0:
 			System.out.println("Closing application");

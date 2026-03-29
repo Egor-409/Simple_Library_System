@@ -9,10 +9,21 @@ import java.io.FileReader;
 
 public class LibraryManager {
 	
+	private static LibraryManager instance;
 	
-	static ArrayList<Book> books = new ArrayList<>();
 	
-	public static void saveToFile(){
+	private ArrayList<Book> books = new ArrayList<>();
+	
+	private LibraryManager () {
+		loadData();
+	}
+	
+	public static LibraryManager getInstance() {
+		if(instance == null) {instance = new LibraryManager();}
+		return instance;
+	}
+	
+	public  void saveToFile(){
 		try (FileWriter saver2 = new FileWriter("BookList.txt", false)) {
 		for (Book a : books) {saver2.write(a.toFileString() + "\n");}
 	}
@@ -22,7 +33,7 @@ public class LibraryManager {
 	
 	
 	
-	public static void loadData() {
+	public void loadData() {
 		try(BufferedReader br = new BufferedReader(new FileReader ("BookList.txt"))) {
 			String line;
 			while(((line = br.readLine())!= null)) {
@@ -39,7 +50,7 @@ public class LibraryManager {
 	
 	
 	
-	public static String bookList() {
+	public  String bookList() {
 		if (books.isEmpty()) {return "Empty library";}
 			return books.stream()
 			.map(Book :: toString)
@@ -52,7 +63,7 @@ public class LibraryManager {
 	
 	
 	
-	public static String addBook (Scanner scanner) {
+	public  String addBook (Scanner scanner) {
 		scanner.nextLine(); 
 		int idCounter = books.size();
 		System.out.println("Enter name of the book");
@@ -67,7 +78,7 @@ public class LibraryManager {
 	
 	
 	
-	public static String findBook(Scanner scanner) {
+	public  String findBook(Scanner scanner) {
 		scanner.nextLine(); 
 		System.out.println("Enter name of the book");
 		String findingBookName = scanner.nextLine();
@@ -84,7 +95,7 @@ public class LibraryManager {
 	
 	
 	
-	public static String getBook(Scanner scanner ) {
+	public  String getBook(Scanner scanner ) {
 		scanner.nextLine(); 
 		System.out.println ("Enter name of the book");
 		String givenBook = scanner.nextLine();
@@ -101,7 +112,7 @@ public class LibraryManager {
 	
 	
 	
-	public static String giveBook(Scanner scanner) {
+	public  String giveBook(Scanner scanner) {
 		scanner.nextLine(); 
 		System.out.println ("Enter name of the book");
 		String givenBook = scanner.nextLine();
@@ -119,7 +130,7 @@ public class LibraryManager {
 	
 	
 	
-	public static String removeBook(Scanner scanner) {
+	public  String removeBook(Scanner scanner) {
 		scanner.nextLine(); 
 		System.out.println("Enter name of the book");
 		String delBook = scanner.nextLine();
