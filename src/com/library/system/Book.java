@@ -1,21 +1,26 @@
 package com.library.system;
 
 public class Book {
-	private static int idCounter = 1;
+	
 	private int id;
 	private String title;
 	private String author;
 	private boolean isAvailable;
 	@Override
 	public String toString(){
-		return "ID: " + id + " | Title: '" + title + "' | Author: " + author + 
+		return "ID: " + id + " | Title: '" + title + "' | Author: " + author + " | Status:" +
 		           (isAvailable ? " [Available]" : " [Checked Out]");
+	}
+	
+	public String toFileString() {
+	    
+	    return id + ";" + title + ";" + author + ";" + isAvailable;
 	}
 
 	
 	
  public Book (int id, String title, String author, boolean isAvailable) {
-	 this.id = idCounter++;
+	 this.id = id;
 	 this.title = title;
 	 this.author = author;
 	 this.isAvailable = true;
